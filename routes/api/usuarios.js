@@ -21,6 +21,28 @@ router.post('/registro',
         res.json(usuario)
     });
 
+router.post('/login', async (req, res) => {
+    // const usua = await Usuario.findOne({ where: { contraseña: req.body.contraseña } && { usuario: req.body.usuario } });
+    const usua = await Usuario.findOne({ where: { usuario: req.body.usuario, contraseña: req.body.contraseña } });
+    if (usua) {
+        console.log("Usuario ok");
+        // const usua2 = await Usuario.findOne({ where: { contraseña: req.body.contraseña } });
+        // if (usua2) {
+        // res.json({ success: createToken(usua) })
+        res.status(200).json(usua)
+        console.log(usua.dataValues.nombre);
+        // } else {
+        //     console.log("no contraseña");
+        //     res.status(404).json({ error: 'Error en usuario y/o contraseña' })
+        // }
 
+
+
+
+    } else {
+        console.log("no Ok");
+        res.status(404).json({ error: 'Error en usuario y/o contraseña' })
+    }
+})
 
 module.exports = router;
