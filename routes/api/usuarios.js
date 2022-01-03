@@ -13,14 +13,16 @@ router.post('/registro',
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422, { errores: errors.array() }).json()
+            return res.status(404, { errores: errors.array() }).json()
         }
         // req.body.contraseña = bcrypt.hashSync(req.body.contraseña, 10);
         // req.body.contraseña = req.body.contraseña;
         const usuario = await Usuario.create(req.body);
-        res.json(usuario)
+        res.status(200).json(usuario)
     });
 
 
-
+router.get("/ping", (req, res) => {
+    res.send("pong")
+})
 module.exports = router;
