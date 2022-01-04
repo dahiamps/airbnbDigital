@@ -14,8 +14,8 @@ describe('Post /login', () => {
 
     test('deberia responder con codigo 200 si los datos de sesion son correctos', async () => {
         const response = await request(server).post("/api/usuario/login").send({
-            usuario: "pruebita",
-            contraseña: "12345"
+            usuario: "dahiamps",
+            contraseña: "octubre27"
 
 
 
@@ -49,8 +49,8 @@ describe('Post /login', () => {
     })
     test('deberia responder con codigo 404 si los datos de sesion estan vacios', async () => {
         const response = await request(server).post("/api/usuario/login").send({
-            usuario: "data",
-            contraseña: "12345"
+            usuario: "",
+            contraseña: ""
 
 
 
