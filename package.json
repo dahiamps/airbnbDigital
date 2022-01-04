@@ -25,5 +25,9 @@
     "moment": "^2.29.1",
     "mysql2": "^2.3.3",
     "sequelize": "^7.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "jest": "^27.4.5",
+    "supertest": "^6.1.6"
   }
 }
