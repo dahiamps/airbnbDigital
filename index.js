@@ -15,3 +15,8 @@ app.use('/api', apiRouter)
 app.listen(3500, () => {
     console.log('Servidor arrancado en http://localhost:3500/');
 })
+
+
+module.exports = {
+    app:app
+}
