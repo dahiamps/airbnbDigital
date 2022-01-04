@@ -68,8 +68,65 @@ describe('Post /registro', () => {
         // console.log(response);
         expect(response.statusCode).toBe(404);
     })
+
+
+    //     check('direccion', 'LA direccion es obligatoria').not().isEmpty(),
+    test('deberia responder con codigo 404 al no enviar datos de la ciudad', async () => {
+        const response = await request(server).post("/api/usuario/registro").send({
+            ciudad: "",
+            contraseña: "12345",
+            direccion: "cll 1",
+            nombre: "Prueba",
+            pais: "Colombia",
+            usuario: "pruebita"
+
+        })
+        // console.log(response);
+        expect(response.statusCode).toBe(404);
+    })
+    //     check('nombre', 'El nombre es obligatori').not().isEmpty(),
+    test('deberia responder con codigo 404 al no enviar datos del nombre', async () => {
+        const response = await request(server).post("/api/usuario/registro").send({
+            ciudad: "medellin",
+            contraseña: "",
+            direccion: "cll 1",
+            nombre: "Prueba",
+            pais: "Colombia",
+            usuario: "pruebita"
+
+        })
+        // console.log(response);
+        expect(response.statusCode).toBe(404);
+    })
+    //     check('pais', 'El pais es obligatorio').not().isEmpty(),
+    test('deberia responder con codigo 404 al no enviar datos del pais', async () => {
+        const response = await request(server).post("/api/usuario/registro").send({
+            ciudad: "medellin",
+            contraseña: "",
+            direccion: "cll 1",
+            nombre: "Prueba",
+            pais: "",
+            usuario: "pruebita"
+        })
+        // console.log(response);
+        expect(response.statusCode).toBe(404);
+    })
+    //     check('usuario', 'El usuario es obligatorio').not().isEmpty(),
+    test('deberia responder con codigo 404 al no enviar datos de usuario', async () => {
+        const response = await request(server).post("/api/usuario/registro").send({
+            ciudad: "medellin",
+            contraseña: "",
+            direccion: "cll 1",
+            nombre: "Prueba",
+            pais: "Colombia",
+            usuario: ""
+
+        })
+        // console.log(response);
+        expect(response.statusCode).toBe(404);
+    })
     
-    test('deberia responder con codigo 404 al no enviar datos ', async () => {
+    test('deberia responder con codigo 404 al no enviar ningun dato ', async () => {
         const response = await request(server).post("/api/usuario/registro").send()
         // console.log(response);
         expect(response.statusCode).toBe(404);

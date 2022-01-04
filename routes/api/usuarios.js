@@ -9,6 +9,9 @@ router.post('/registro',
         check('ciudad', 'LA ciudad es obligatoria').not().isEmpty(),
         check('contraseña', 'LA Contraseña es obligatoria').not().isEmpty(),
         check('direccion', 'LA direccion es obligatoria').not().isEmpty(),
+        check('nombre', 'El nombre es obligatori').not().isEmpty(),
+        check('pais', 'El pais es obligatorio').not().isEmpty(),
+        check('usuario', 'El usuario es obligatorio').not().isEmpty(),
     ],
     async (req, res) => {
         const errors = validationResult(req);
