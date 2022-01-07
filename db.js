@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const usuarioModel = require('./models/usuarios');
+const casaModel = require('./models/casas');
 
 const baseDatos = new Sequelize("proyectobd", "root", "", {
     host: "localhost",
@@ -7,6 +8,7 @@ const baseDatos = new Sequelize("proyectobd", "root", "", {
 })
 
 const Usuario = usuarioModel(baseDatos, Sequelize);
+const Casa = casaModel(baseDatos, Sequelize);
 
 
 baseDatos.sync({ force: false })
@@ -15,5 +17,6 @@ baseDatos.sync({ force: false })
     })
 
 module.exports = {
-    Usuario
+    Usuario,
+    Casa
 }
