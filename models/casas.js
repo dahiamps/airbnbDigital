@@ -6,20 +6,12 @@ module.exports = (Sequelize, type) => {
             type: type.INTEGER,
             autoIncrement: true
         },
-        disponibilidad: {
-            type: type.STRING
-        },
-        telefono: {
-            type: type.STRING
-        },
-        pais: {
-            type: type.STRING
-        },
-        ciudad: {
-            type: type.STRING
-        },
-        direccion: {
-            type: type.STRING
-        }
+        disponibilidad: type.STRING,
+        telefono: type.STRING,
+        pais: type.STRING,
+        ciudad: type.STRING,
+        direccion: type.STRING,
+        imagen: type.STRING,
+
     });
 }
