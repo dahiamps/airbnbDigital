@@ -56,8 +56,18 @@ router.post('/registro2', upload.single('imagen2'),(req, res) => {
     res.json(req.file)
 }
 
-
 )
 
+
+router.get('/casas', async (req, res) => {
+    const casas = await Casa.findAll();
+    res.json(casas)
+})
+ 
+router.get('/casas/:casaid', async (req, res) => {
+    const casa = await Casa.findOne({where:{id:req.params.casaid}})
+    // const casas = await Casa.findAll();
+    res.json(casa)
+})
 
 module.exports = router;

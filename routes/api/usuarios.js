@@ -18,7 +18,7 @@ router.post('/registro',
         // req.body.contraseña = bcrypt.hashSync(req.body.contraseña, 10);
         // req.body.contraseña = req.body.contraseña;
         const usuario = await Usuario.create(req.body);
-        res.status(404).json(usuario)
+        res.status(200).json(usuario)
     });
 
 router.post('/login', async (req, res) => {
