@@ -64,6 +64,7 @@ router.get('/casas', async (req, res) => {
     res.json(casas)
 })
  
+
 router.get('/casas/:casaid', async (req, res) => {
     const casa = await Casa.findOne({where:{id:req.params.casaid}})
     // const casas = await Casa.findAll();
