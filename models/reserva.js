@@ -12,9 +12,12 @@ module.exports = (Sequelize, type) => {
         fechaInicio: type.DATEONLY,
         fechaFin: type.DATEONLY,
         idCasa: type.STRING,
+        nombreCasa: type.STRING,
         idPropietario: type.STRING,
         estadoSolicitud: type.STRING,
         NotasCliente: type.STRING,
+        cCliente: type.STRING,
+        cCasa: type.STRING
 
     });
 }

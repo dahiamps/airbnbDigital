@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Casa } = require('../../db');
+const { Casa,Usuario } = require('../../db');
 const { check, validationResult } = require('express-validator')
 const moment = require('moment')
 const fs = require('fs')
@@ -39,7 +39,8 @@ router.post('/registro',
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(404).json({ errores: errors.array() })
+            const errores = errors.array()
+            res.status(404).json( errores)
         }
         // const casa = await Casa.create(req.body)
        
@@ -62,6 +63,7 @@ router.post('/registro2', upload.single('imagen2'),(req, res) => {
 router.get('/casas', async (req, res) => {
     const casas = await Casa.findAll();
     res.json(casas)
+
 })
  
 

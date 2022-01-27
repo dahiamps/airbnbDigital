@@ -16,6 +16,23 @@ router.get('/reserva/:propietarioid', async (req, res) => {
 })
 
 
+router.get('/solicitudes/:clienteid', async (req, res) => {
+    const reserva = await Reserva.findAll({ where: { idCliente: req.params.clienteid } })
+    // const casas = await Casa.findAll();
+    res.json(reserva)
+})
+
+router.get('/solicitudes/:clienteid/:estado', async (req, res) => {
+    const reserva = await Reserva.findAll({
+        where: {
+            idCliente: req.params.clienteid,
+            estadoSolicitud: req.params.estado
+        }
+    })
+    // const casas = await Casa.findAll();
+    res.json(reserva)
+})
+
 
 
 router.put('/reserva/:idRe', async (req, res) => {

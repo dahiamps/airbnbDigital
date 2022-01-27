@@ -13,7 +13,7 @@ router.post('/registro',
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(404, { errores: errors.array() }).json()
+            return res.status(404).json({ errores: errors.array() })
         }
         // req.body.contraseña = bcrypt.hashSync(req.body.contraseña, 10);
         // req.body.contraseña = req.body.contraseña;
