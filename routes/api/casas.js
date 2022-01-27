@@ -29,21 +29,22 @@ const upload = multer({ dest: 'public/images' })
 router.post('/registro',
     upload.single('imagen2'),
     [
+        check('nombreCasa', 'El nombre de la casa es obligatorio').not().isEmpty(),
         check('disponibilidad', 'LA disponibilidad es obligatoria').not().isEmpty(),
+        check('disponibilidad2', 'LA disponibilidad es obligatoria').not().isEmpty(),
         check('telefono', 'El telefono es obligatorio').not().isEmpty(),
         check('pais', 'El pais es obligatorio').not().isEmpty(),
         check('direccion', 'La direccion es obligatoria').not().isEmpty(),
         check('imagen', 'La imagen es obligatoria').not().isEmpty(),
         check('ciudad', 'La ciudad es obligatoria').not().isEmpty(),
-    ],
-    async (req, res) => {
+        check('idpropietario', 'El id del propietario es obligatoria').not().isEmpty(),
+        
+    ], async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            const errores = errors.array()
-            res.status(404).json( errores)
+            return res.status(404).json({ errores: errors.array() })
         }
-        // const casa = await Casa.create(req.body)
-       
+        
         const casa = await Casa.create(req.body)
         res.status(200).json(casa)
  
@@ -62,7 +63,7 @@ router.post('/registro2', upload.single('imagen2'),(req, res) => {
 
 router.get('/casas', async (req, res) => {
     const casas = await Casa.findAll();
-    res.json(casas)
+    res.status(200).json(casas)
 
 })
  
@@ -70,7 +71,7 @@ router.get('/casas', async (req, res) => {
 router.get('/casas/:casaid', async (req, res) => {
     const casa = await Casa.findOne({where:{id:req.params.casaid}})
     // const casas = await Casa.findAll();
-    res.json(casa)
+    res.status(200).json(casa)
 })
 
 module.exports = router;
